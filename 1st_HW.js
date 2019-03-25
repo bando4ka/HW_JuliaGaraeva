@@ -34,9 +34,13 @@ var b = 16;
 var aa = a+""
 var c = aa + b;
 console.log(c);
+
 //or
+
 console.log(""+a+b);
+
 //or
+
 var a = 20;
 var b = 16;
 var aa = a.toString();
