@@ -149,3 +149,20 @@ if(((parseInt(product.price)) >= min) && ((parseInt(product.price)) <= max)){
 } else {
   console.log("Товаров не найдено");
 };
+
+
+//Part 4 - Объекты
+
+let phone = {
+  product: 'iphone'
+}
+
+phone.price = 1000;
+phone.currency = 'dollar';
+//phone += {details: modelkey3: "value3"};
+let details = {};
+phone.details = details;
+phone.details.model = "X";
+phone.details.color = "Gold/Pink";
+
+console.log(phone);
