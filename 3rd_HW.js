@@ -54,3 +54,35 @@ let car = { name: 'Lexus', age: 10, create: 2008, needRepair: false }
 car.age > 5 ? (car.needRepair = true) && (console.log('Need Repair'))
     : car.needRepair = false;
 console.log(car);
+
+//Part 2. Циклы. Задачи.
+//1 
+/* На основе строки “i am in the easycode” сделать новую строку где первые буквы каждого слова
+будут в верхнем регистре. Использовать for или while. */
+
+let studyPlace = 'i am in the easycode';
+
+  let arr = studyPlace.split(' ');
+  let strTotal = "";
+
+for (let i = 0; i<arr.length; i++){
+    let word = arr[i];
+    let firstLetter = word.substring(0, 1).toUpperCase();
+    let restOfTheWord = word.substring(1, word.length);
+    strTotal += firstLetter + restOfTheWord + " ";
+}
+console.log(strTotal);
+
+//2
+/* Дана строка “tseb eht ma i”. Используя циклы, сделать строку-перевертыш (то есть последняя буква
+становится первой, предпоследняя - второй итд). */
+
+let string = 'tseb eht ma i';
+let letters = string.split('');
+let newString = "";
+
+for (let i = letters.length-1; i>=0; i--){
+  newString += letters[i];
+}
+console.log (newString);
+
