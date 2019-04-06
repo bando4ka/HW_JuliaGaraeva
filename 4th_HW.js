@@ -97,11 +97,17 @@ console.log(doubleArray([3, 6, 9]));
 массива первый элемент, а возвращает массив из оставшихся значений:
 changeCollection([1,2,3], [‘a’, ’b’, ‘c’]) → [ [2,3], [‘b’, ‘c’] ], changeCollection([1,2,3]) → [ [2,3] ] и т.д. */
 
-// function changeCollection(aFewArrays) {
-//     let newArrayFromFewArrays = [];
-//     //for(let i = 0; i<aFewArrays.length; i++)
+function changeCollection(...arrayCollection) {
+    // [[1,2,3], [7,8,9]]
+    let changedCollection = [];
 
-// //console.log(changeCollection([3, 6, 9], ['a', 'b', 'c']));
+    for (let i = 0; i < arrayCollection.length; i++) {
+        changedCollection.push(arrayCollection[i].slice(1))
+    }
+
+    return changedCollection;
+}
+console.log(changeCollection([1,2,3], [7,8,9]));
 
 
 //8
@@ -110,12 +116,19 @@ changeCollection([1,2,3], [‘a’, ’b’, ‘c’]) → [ [2,3], [‘b’, �
 массив с пользователями соответсвующие указанным параметрам.
 funcGetUsers(users, “gender”, “male”); // [ {name: “Denis”, age: “29”, gender: “male”} , {name: “Ivan”, age: “20”, gender: “male”} ] */
 
-//function funcGetUsers(users, 'gender', 'male') {
-//     let users = [];
-//
-// for (var item in users) {
-//     return `${item}: ${users[item]}`;
-//        }
-// }
+let user = {
+    name: 'sasha',
+    age: 25
+};
 
-    //console.log(funcGetUsers([{name: 'Denis', age: '29', gender: 'male'} , {name: 'Ivan', age: '20', gender: 'male'}]));
+let additionalInfo = {
+    country: 'Ukraine',
+    city: 'Kyiv'
+};
+let improvedUser = {
+    ...user,
+    ...additionalInfo
+};
+//const {name, age, country, city} = improvedUser;
+
+console.log('improvedUser', improvedUser);
