@@ -21,7 +21,7 @@ arrLi.forEach(function(oneLi, index) {
     let li = document.createElement('li');
     li.textContent = `item${index+5}`;
     li.classList.add('new-item');
-    li.href ='';
+
     fragment.appendChild(li);
 });
 
