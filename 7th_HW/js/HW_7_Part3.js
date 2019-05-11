@@ -1,4 +1,4 @@
-console.log('---------- Part3, Slides 17-18 ----------');
+console.log('---------- Part3 Slides 17-18 ----------');
 /*
 1. Не используя innerHTML, добавить в список несколько li с классом ‘new-item’ и текстом ‘item’ +
 номер li:
@@ -61,24 +61,17 @@ elMark.insertAdjacentHTML('beforeend', 'green');
 //5. Отсортировать li внутри списка в обратном порядке (по тексту внутри)
 
 console.log('---------- 5/1 ----------');
-debugger;
-let selectedLi2 = document.querySelectorAll('li');
-
-const sortedLiAccordingToText = Array.from(selectedLi2, el => el.textContent).sort();
-console.log(sortedLiAccordingToText);
+//мое решение с reverse вместо sort, предложенного Алоной
+let arrOfLi = Array.prototype.slice.call(document.querySelectorAll('ul li'), 0);
+arrOfLi
+    .reverse()
+    .forEach(el => selectedUl.append(el));
 
 console.log('---------- 5/2 ----------');
-
-let arrForSorting = [];
-
-for (let el of selectedLi2){
-    arrForSorting.push(el.textContent);
-
-}
-let sortedArray = arrForSorting.sort(function(a, b) {
-    return a - b;
-});
-console.log(sortedArray);
-
+//corrected after Alina's explaining
+// let arrOfLi2 = Array.prototype.slice.call(document.querySelectorAll('ul li'), 0);
+// arrOfLi2
+//     .sort((prev, next) => prev.innerText > next.innerText ? -1 : 1)
+//     .forEach(el => selectedUl.append(el));
 
 
