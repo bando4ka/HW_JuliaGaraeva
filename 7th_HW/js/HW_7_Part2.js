@@ -9,29 +9,29 @@ const listUlPlusClassList = listUl.classList.add('list');
 
 //2. Найти в коде ссылку, находящуюся после списка ul, и добавить id=link
 console.log('---------- 2 ----------');
-//решение исходя из объяснения Алины в ходе урока
-const linkA = document.querySelector('ul a');
+//решение исходя из объяснения Алины в ходе урока, corrected
+const linkA = document.querySelector('ul ~ a');
 linkA.setAttribute('id', 'link');
 
-console.log('---------- 2/1 not resolved ----------');
-//Если имелась в виду первая ссылка после всего списка UL, то решить не получается
-// const allLinks = document.querySelectorAll('a');
-// let allAWithoutAOfUl = [];
-// for(let a of allLinks){
-//     if(!a.closest('ul'))
-//         allAWithoutAOfUl.push(a);
-// }
-// let arrALinkAfterUl = allAWithoutAOfUl.slice(1);
-// arrALinkAfterUl.setAttribute(id, 'link');
+console.log('---------- 2/1 ----------');
+//Если имелась в виду первая ссылка после всего списка UL, changed after explaining homework
+let lastLink = document.querySelector('ul').nextElementSibling;
+while (lastLink) {
+    if (lastLink.tagName === 'A') {
+        lastLink.setAttribute('id', 'link1');
+        break
+    }
+    lastLink = lastLink.nextElementSibling
+}
 
-console.log('---------- 2/2 not resolved----------');
-//Если имелась в виду первая ссылка после всего списка UL, то решить не получается (2-й способ)
-// let arrayA = Array.from(allLinks,  el => !el.closest('ul'));
-// let arrayLastAAA = arrayA.slice(1);
-// arrayLastAAA.setAttribute('id', 'link');
+
+
+
+
+
 
 //3.На li через один (начиная с самого первого) установить класс “item”
-console.log('---------- 3/1 ----------');
+console.log('---------- 3/1 ----------');//34
 
 let allLiItems = document.querySelectorAll('li');
 let arrayOfLi = [];
