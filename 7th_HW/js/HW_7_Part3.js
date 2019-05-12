@@ -12,19 +12,25 @@ console.log('---------- Part3 Slides 17-18 ----------');
 Код для задач брать со слайда 5.
  */
 console.log('---------- 1 ----------');
-
+//переделала, так номер item будет по-порядку при любом количестве добавленных лишек
 let selectedUl  = document.querySelector('ul');
 let fragment = document.createDocumentFragment();
 let arrLi = ['li', 'li', 'li'];
 
 arrLi.forEach(function(oneLi, index) {
     let li = document.createElement('li');
-    li.textContent = `item${index+5}`;
     li.classList.add('new-item');
 
+    let liSel = document.querySelectorAll('ul li');
+    let count = 0;
+    if(li){
+
+        for(let element of liSel);
+        count += liSel.length;
+    }
+    li.textContent = `Item ${index+1 +count}`;
     fragment.appendChild(li);
 });
-
 selectedUl.appendChild(fragment);
 
 /*2. В каждую ссылку, которая находятся внутри списка ul добавить по тегу strong (в каждую ссылку
@@ -61,7 +67,7 @@ elMark.insertAdjacentHTML('beforeend', 'green');
 //5. Отсортировать li внутри списка в обратном порядке (по тексту внутри)
 
 console.log('---------- 5/1 ----------');
-//мое решение с reverse вместо sort, предложенного Алоной
+//решила с reverse, так запись короче и тоже работает
 let arrOfLi = Array.prototype.slice.call(document.querySelectorAll('ul li'), 0);
 arrOfLi
     .reverse()
