@@ -7,7 +7,7 @@ console.log('---------- 1 ----------');
 let btnMsg = document.getElementById('btn-msg');
 let dataText = btnMsg.dataset.text;
 
-btnMsg.addEventListener('click', (event) => {
+btnMsg.addEventListener('click', () => {
     alert(dataText);
 });
 
@@ -26,14 +26,14 @@ btnMsg.addEventListener('mouseout', (event) => {
 console.log('---------- 3 ----------');
 
 let elementWithIdTag = document.getElementById('tag');
-
-document.body.addEventListener('click', ({target}) => {
-    elementWithIdTag.textContent = 'Tag: '+ event.target.tagName;
+document.body.addEventListener('click', (event) => {
+    let element = event.target;
+    elementWithIdTag.textContent = `Tag:  ${element.tagName}`;
 });
 
 /*4. При нажатии на кнопку btn-generate добавлять в список ul элемент списка Li с текстом Item +
 порядковый номер Li по списку, т.е Item 3, Item 4 и т.д*/
-console.log('---------- 4 ----------');
+console.log('---------- 4/1 ----------');
 
 let btnGenerate = document.getElementById('btn-generate');
 let ulSelected = document.querySelector('ul');
@@ -63,6 +63,18 @@ btnGenerate.addEventListener('click', (event) => {
     ulSelected.appendChild(fragment);
 });
 
-//5. Из проекта todo реализовать редактирование задачи.
-console.log('---------- 5 ----------');
-//ToDo отправлю позднее
+console.log('---------- 4/2 ----------');
+
+let ulSelected1 = document.querySelector('ul');
+let btnGenerate1 = document.querySelector('#btn-generate');
+
+btnGenerate1.addEventListener('click', function() {
+
+    let liSelected1 = document.querySelectorAll('li');
+    let newLi= document.createElement('li');
+    let liLength1 = liSelected1.length + 1;
+
+    newLi.innerText = `Item ${liLength1}`;
+
+    ulSelected1.appendChild(newLi);
+});
