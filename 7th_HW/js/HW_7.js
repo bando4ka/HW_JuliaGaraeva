@@ -12,29 +12,29 @@ console.log(findParagraph);
 /*2. Создать функцию, которая принимает в качестве аргумента узел DOM и возвращает информацию
 (в виде объекта) о типе узла, об имени узла и о количестве дочерних узлов (если детей нет - 0).*/
 console.log('---------- 2 ----------');
-
+const elementDom = document.querySelector('ul');
 function domInf(element) {
 
     let typeOfNode = element.nodeType;
-// if(typeOfNode === 1) typeOfNode = "element";
-// else if(typeOfNode === 3) typeOfNode = "text node";
-// else if (typeOfNode === 8) typeOfNode = "comment node";
+    if(typeOfNode === 1) typeOfNode = "element";
+    else if(typeOfNode === 3) typeOfNode = "text node";
+    else if(typeOfNode === 8) typeOfNode = "comment node";
+
     let nameOfNode = element.nodeName;
-    let numberOfChildren = element.children.length;
+    let numberOfChildren = 0;
 
-    let propertiesOfNode = {};
-
-    return propertiesOfNode =
-
-    {
-        nodeType : typeOfNode,
-        nodeName : nameOfNode,
-        childrenNumber : numberOfChildren
+    if(element.hasChildNodes()){
+        numberOfChildren = element.children.length;
+    }
+    return {
+        typeOfNode,
+        nameOfNode,
+        numberOfChildren
     }
 }
-console.log(domInf(document.querySelector('ul')));
+console.log(domInf(elementDom));
 
-/*3. Получить массив, который состоит из текстового содержимого ссылок внутри списка:
+/* 3. Получить массив, который состоит из текстового содержимого ссылок внутри списка:
 getTextFromUl(ul) ---> ["Link1", "Link2", "Link3"]*/
 console.log('---------- 3/1 ----------');
 const listOfLi = document.querySelectorAll('ul li');
@@ -54,23 +54,23 @@ console.log('---------- 3/2 ----------');
 const getTextFromUl2 = Array.from(listOfLi, el => el.textContent);
 console.log(getTextFromUl2);
 
-
-console.log('---------- 3/3 not resolved ----------');
-//Прошу объснить, почему не работает
-// debugger;
-let getTextFromUl3 = Array.prototype.forEach.call(listOfLi, element => element.textContent);
-console.log(getTextFromUl3);
-
 /*4. В параграфе заменить все дочерние текстовые узлы на “-text-” (вложенные теги должны
 остаться). Конечный результат:
 -text-<a href="#">reprehendunt</a>-text-<mark>nemore</mark>-text-
 */
 console.log('---------- 4 ----------');
 
-let parChildren = elParagraph.children;
-let arr1 = [];
-for(let child of parChildren){
-    arr1.push('-text-' + child.outerHTML)
-}
-let changedChildrenArr = arr1.join('');
-console.log(changedChildrenArr);
+let parChildren = elParagraph.childNodes;
+
+let arr1 = Array.from(parChildren);
+let fragment1 = document.createDocumentFragment();
+arr1.forEach(child => {
+
+    if (child.nodeType === 3) {
+        child.data = '-text-';
+    }
+
+    return fragment1.appendChild(child);
+});
+
+elParagraph.appendChild(fragment1);
