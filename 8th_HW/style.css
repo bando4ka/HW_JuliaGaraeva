@@ -1,0 +1,13 @@
+.btn-color {
+    background-color: red;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    color: white;
+}
+
+.d-none {
+    display: none;
+}
+
+.dropdown-item {
+    cursor: pointer;
+}
