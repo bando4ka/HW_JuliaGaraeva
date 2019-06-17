@@ -5,8 +5,8 @@ console.log('---------- Part 2, Slide 11 ----------');
 console.log('---------- 1 ----------');
 
 const listUl = document.querySelector('ul');
-const listUlPlusClassList = listUl.classList.add('list');
-
+listUl.classList.add('list');
+//listUl.setAttribute('class', 'list');
 //2. Найти в коде ссылку, находящуюся после списка ul, и добавить id=link
 console.log('---------- 2 ----------');
 //решение исходя из объяснения Алины в ходе урока, corrected
@@ -35,17 +35,17 @@ console.log('---------- 3/1 ----------');//34
 
 let allLiItems = document.querySelectorAll('li');
 let arrayOfLi = [];
-
 for(let i = 0; i < allLiItems.length; i += 2) {
     const el = allLiItems[i].classList.add("item");
     arrayOfLi.push(el);
 }
 console.log(arrayOfLi);
 
+
 console.log('---------- 3/2 ----------');
 
 //let allLiItems = document.querySelectorAll('li');
-Array.prototype.filter.call(allLiItems, (el, index) => index % 2 === 0? el.classList.add("item"): false);
+Array.prototype.forEach.call(allLiItems, (el, index) => index % 2 === 0? el.classList.add("item"): false);
 console.log(allLiItems);
 
 //4. На все ссылки в примере установить класс “custom-link”
@@ -54,16 +54,14 @@ let allLinks = document.querySelectorAll('a');
 let arrayAllLinks = [];
 
 for(let i = 0; i < allLinks.length; i++) {
-    const el = allLinks[i].classList.add("custom-link");
+    allLinks[i].classList.add("custom-link");
     arrayAllLinks.push(el);
 }
 
 
 console.log('---------- 4/2 ----------');
-
-const toAddClassesToAllLinks= Array.from(allLinks, el => el.classList.add("custom-link"));
-console.log(toAddClassesToAllLinks);
+//let allLinks = document.querySelectorAll('a');
+Array.from(allLinks, el => el.classList.add("custom-link"));
 
 console.log('---------- 4/3 ----------');
-let toAddClassesToAllLinks2 = Array.prototype.forEach.call(allLinks, (el) => el.classList.add("custom-link"));
-console.log(toAddClassesToAllLinks2);
+Array.prototype.forEach.call(allLinks, (el) => el.classList.add("custom-link"));
